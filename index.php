@@ -1,3 +1,17 @@
+<?php
+
+$contacts = [
+  ["name" => "Pepe", "phone_number" => "222222222" ],
+  ["name" => "Carliyos", "phone_number" => "1111111111" ],
+  ["name" => "Juan", "phone_number" => "3333333333" ],
+  ["name" => "Edu", "phone_number" => "4444444444" ],
+  ["name" => "Rodrigo", "phone_number" => "555555555" ],
+  ["name" => "Marcos", "phone_number" => "666666666" ]
+
+]
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,175 +39,57 @@
 <body>
  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
- 
     <div class="container-fluid">
- 
       <a class="navbar-brand font-weight-bold" href="#">
- 
         <img class="mr-2" src="./static/img/logoPhpCurso.png" />
- 
         ContactsApp
- 
       </a>
- 
       <button
- 
         class="navbar-toggler"
- 
         type="button"
- 
         data-bs-toggle="collapse"
- 
         data-bs-target="#navbarNav"
- 
         aria-controls="navbarNav"
- 
         aria-expanded="false"
- 
         aria-label="Toggle navigation"
- 
       >
- 
-
         <span class="navbar-toggler-icon"></span>
-      
       </button>
- 
       <div class="collapse navbar-collapse" id="navbarNav">
-
         <ul class="navbar-nav">
-        
           <li class="nav-item">
- 
             <a class="nav-link" href="#">Home</a>
- 
           </li>
- 
           <li class="nav-item">
- 
             <a class="nav-link" href="./add.html">Add Contact</a>
- 
           </li>
- 
         </ul>
-
       </div>
-
     </div>
- 
   </nav>
 
   <main>
  
 
     <div class="container pt-4 p-3">
- 
-
       <div class="row">
- 
-
+        
+      <?php foreach($contacts as $contact): ?>
         <div class="col-md-4 mb-3">
- 
-
           <div class="card text-center">
- 
-
             <div class="card-body">
- 
-
-              <h3 class="card-title text-capitalize">Contact Name 1</h3>
- 
-
-              <p class="m-2">987654321</p>
- 
-
+              <h3 class="card-title text-capitalize"> <?= $contact["name"] ?></h3>
+              <p class="m-2"> <?= $contact["phone_number"] ?></p>
               <a href="#" class="btn btn-secondary mb-2">Edit Contact</a>
- 
-
               <a href="#" class="btn btn-danger mb-2">Delete Contact</a>
- 
-
             </div>
- 
-
           </div>
- 
-
         </div>
- 
-
-
- 
-
-        <div class="col-md-4 mb-3">
- 
-
-          <div class="card text-center">
- 
-
-            <div class="card-body">
- 
-
-              <h3 class="card-title text-capitalize">Contact Name 2</h3>
- 
-
-              <p class="m-2">987654321</p>
- 
-
-              <a href="#" class="btn btn-secondary mb-2">Edit Contact</a>
- 
-
-              <a href="#" class="btn btn-danger mb-2">Delete Contact</a>
- 
-
-            </div>
- 
-
-          </div>
- 
-
-        </div>
- 
-
-
- 
-
-        <div class="col-md-4 mb-3">
- 
-
-          <div class="card text-center">
- 
-
-            <div class="card-body">
- 
-
-              <h3 class="card-title text-capitalize">Contact Name 3</h3>
- 
-
-              <p class="m-2">987654321</p>
- 
-
-              <a href="#" class="btn btn-secondary mb-2">Edit Contact</a>
- 
-
-              <a href="#" class="btn btn-danger mb-2">Delete Contact</a>
- 
-
-            </div>
- 
-
-          </div>
- 
-
-        </div>
- 
-
+      <?php endforeach ?>
       </div>
- 
-
     </div>
- 
-
+  
   </main>
+
 </body>
 </html>
