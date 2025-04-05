@@ -1,26 +1,28 @@
 <pre>
 <?php
+require "database.php";
   if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $contact = [
-      "name" => $_POST["name"],
-      "phone_number" => $_POST["phone_number"],
-    ];
-
-    //Cargamos los que ya habia
-    if(file_exists("contacts.json")){
-      $contacts=json_decode(file_get_contents("contacts.json"), true);
-    }else{
-      $contacts=[];
+      $name = $_POST["name"];
+      $phoneNumber = $_POST["phone_number"];
+  
+      $statement = $conn->prepare("INSERT INTO contacts (name, phone_number) VALUES('$name', '$phoneNumber')");
+      $statement->execute();
+      
+      header("Location: index.php");
     }
 
-    //Añadimos el ultimo
-    $contacts[] = $contact;
+    // //Cargamos los que ya habia
+    // if(file_exists("contacts.json")){
+    //   $contacts=json_decode(file_get_contents("contacts.json"), true);
+    // }else{
+    //   $contacts=[];
+    // }
 
-    file_put_contents("contacts.json", json_encode($contacts));
+    // //Añadimos el ultimo
+    // $contacts[] = $contact;
 
-    header("Location: index.php");
+    // file_put_contents("contacts.json", json_encode($contacts));
 
-  }
 ?>
 </pre>
 
