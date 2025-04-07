@@ -1,3 +1,4 @@
+-- Active: 1743887229115@@127.0.0.1@3306
 DROP DATABASE IF EXISTS contacts_app;
 
 CREATE DATABASE contacts_app;
