@@ -9,7 +9,16 @@ if(!isset($_SESSION["user"])){
   return;
 }
 
-$contacts  = $conn->query("SELECT * FROM contacts")
+$id = (int) $_SESSION["user"]["user_id"];
+var_dump($id);
+
+$contacts = $conn->prepare("SELECT * FROM contacts WHERE user_id = :id");
+$contacts->bindParam(":id", $id, PDO::PARAM_INT);
+$contacts->execute();
+
+$result = $contacts->fetchAll(PDO::FETCH_ASSOC);
+
+var_dump($result);
 
 ?>
 
@@ -25,7 +34,7 @@ $contacts  = $conn->query("SELECT * FROM contacts")
       </div>
     </div>
   <?php endif ?>  
-  <?php foreach($contacts as $contact): ?>
+  <?php foreach($result as $contact): ?>
     <div class="col-md-4 mb-3">
       <div class="card text-center">
         <div class="card-body">
