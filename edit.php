@@ -21,7 +21,7 @@ if($statement->rowCount()==0){
 
 $contact = $statement->fetch(PDO::FETCH_ASSOC);
 
-if($contact["id"] !== $_SESSION["user"]["user_id"] ){
+if($contact["user_id"] !== $_SESSION["user"]["user_id"] ){
   http_response_code(403);
   echo("HTTP 403 UNAUTHORIZED");
   return;
@@ -46,7 +46,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
           ":phoneNumber" => $_POST["phone_number"],
         ]);
         
+        $_SESSION["flash"] = ["message" => "Contact {$_POST['name']} updated successfully."];
+
         header("Location: home.php");
+        return;
       }
     }
 

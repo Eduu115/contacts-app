@@ -19,6 +19,7 @@ $contacts->execute();
 $result = $contacts->fetchAll(PDO::FETCH_ASSOC);
 
 var_dump($result);
+var_dump($contacts->rowCount() );
 
 ?>
 
@@ -26,7 +27,7 @@ var_dump($result);
 
 <div class="container pt-4 p-3">
   <div class="row">
-  <?php if ($contacts->rowCount() ==0): ?>
+  <?php if (count($result) == 0 ): ?>
     <div class="col-md-4 mx-auto">
       <div class="card card-body text-center">
         <p>No contacts saved yet</p>
@@ -35,6 +36,7 @@ var_dump($result);
     </div>
   <?php endif ?>  
   <?php foreach($result as $contact): ?>
+    
     <div class="col-md-4 mb-3">
       <div class="card text-center">
         <div class="card-body">
