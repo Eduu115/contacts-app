@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand font-weight-bold" href="#">
+      <a class="navbar-brand font-weight-bold" href="./index.php">
         <img class="mr-2" src="./static/img/logoPhpCurso.png" />
         ContactsApp
       </a>
@@ -20,12 +20,15 @@
           <ul class="navbar-nav">
           <?php if(isset($_SESSION["user"])): ?>
               <li class="nav-item">
-                <a class="nav-link" href="././index.php">Home</a>
+                <a class="nav-link" href="././home.php">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./adresses.php?contactId=<?= $contactId ?>&contactName=<?= $contactName ?>">Adresses Menu</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./addAdress.php?contactId=<?= $contactId ?>&contactName=<?= $contactName ?>">Add Adress</a>
-
               </li>
+              
             <?php else: ?>
               <li class="nav-item">
                 <a class="nav-link" href="././register.php">Register</a>

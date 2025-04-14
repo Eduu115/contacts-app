@@ -10,7 +10,6 @@ if(!isset($_SESSION["user"])){
 }
 var_dump($_SERVER['REQUEST_URI']);
 
-// $adress_contact = $_GET["contactName"]; 
 $adress_contact = isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"];
 
 $error = "";
@@ -19,8 +18,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $error = "Please, fill the fields.";
       }else if(strlen( $_POST["adress_location"]) < 12 ){
         $error = "Please, introduce a valid adress";
-        // header("Location: " . $_SERVER['REQUEST_URI']);
-        // exit;
+
       }else{
         
         $adress_name = $_POST["adress_name"];
@@ -57,20 +55,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         return;
       }
     }
-    
-
-    // //Cargamos los que ya habia
-    // if(file_exists("contacts.json")){
-    //   $contacts=json_decode(file_get_contents("contacts.json"), true);
-    // }else{
-    //   $contacts=[];
-    // }
-
-    // //Añadimos el ultimo
-    // $contacts[] = $contact;
-
-    // file_put_contents("contacts.json", json_encode($contacts));
-
 ?>
 <?php require "partials/adresses_header.php"; ?>
 <div class="container pt-5">
@@ -83,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             <p class="text-danger"> <?= $error ?></p>
           <?php }?>
           <form method="post" action="addAdress.php">
-            <input type="hidden" name="contactId" value="<?= isset($_POST["contactId"]) ? (int) $_POST["contactId"] : (int) $_GET["contact_id"] ?>">
+            <input type="hidden" name="contactId" value="<?= isset($_POST["contactId"]) ? (int) $_POST["contactId"] : (int) $_GET["contactId"] ?>">
             <input type="hidden" name="contactName" value="<?= isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"] ?>">
 
             <div class="mb-3 row">

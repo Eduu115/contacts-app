@@ -9,7 +9,7 @@ if(!isset($_SESSION["user"])){
   return;
 }
 $adress_id = isset($_POST["adressId"]) ? (int) $_POST["adressId"] : (int) $_GET["adress_id"];
-$contactName = $_GET["contactName"];
+$contactName = isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"];
 var_dump($contactName);
 var_dump($adress_id);
 $statement = $conn->prepare("SELECT * FROM adresses WHERE adress_id = :adress_id");
@@ -66,31 +66,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       }
     }
 
-    // //Cargamos los que ya habia
-    // if(file_exists("contacts.json")){
-    //   $contacts=json_decode(file_get_contents("contacts.json"), true);
-    // }else{
-    //   $contacts=[];
-    // }
-
-    // //Añadimos el ultimo
-    // $contacts[] = $contact;
-
-    // file_put_contents("contacts.json", json_encode($contacts));
-
 ?>
 <?php require "partials/adresses_header.php"; ?>
 <div class="container pt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Add New Contact</div>
+        <div class="card-header">Edit the adress for <?= $contactName?></div>
         <div class="card-body">
           <?php if($error){ ?>
             <p class="text-danger"> <?= $error ?></p>
           <?php }?>
           <form method="POST" action="editAdress.php?adress_id=<?= $adress["adress_id"] ?>&contactId=<?= $adress["contact_id"] ?>">
           <input type="hidden" name="adress_id" id="adress_id" value="<?= $_GET["adress_id"] ?>">
+          <input type="hidden" name="contactName" value="<?= isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"] ?>">
+
           <div class="mb-3 row">
               <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>  
               <div class="col-md-6">
