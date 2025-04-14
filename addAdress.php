@@ -8,23 +8,26 @@ if(!isset($_SESSION["user"])){
   header("Location: login.php");
   return;
 }
-$adress_contact = $_GET["contactName"];
+var_dump($_SERVER['REQUEST_URI']);
 
-$error = null;
+// $adress_contact = $_GET["contactName"]; 
+$adress_contact = isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"];
 
+$error = "";
 if($_SERVER["REQUEST_METHOD"]=="POST"){
       if(empty($_POST["adress_name"])){
         $error = "Please, fill the fields.";
       }else if(strlen( $_POST["adress_location"]) < 12 ){
         $error = "Please, introduce a valid adress";
+        // header("Location: " . $_SERVER['REQUEST_URI']);
+        // exit;
       }else{
         
         $adress_name = $_POST["adress_name"];
         $adress_location = $_POST["adress_location"];
         $userId= $_SESSION["user"]["user_id"];
         $contactId = (int) $_POST["contactId"];
-        
-        var_dump($adress);
+
         var_dump($userId);
         var_dump($contactId);
 
@@ -49,7 +52,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         
         $_SESSION["flash"] = ["message" => "adress for Contact {$adress_contact} added successfully."];
 
-        header("Location: home.php");
+        header("Location: adresses.php?contactId=" . urlencode($contactId) . "&contactName=" . urlencode($adress_contact));
+
         return;
       }
     }
@@ -79,7 +83,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             <p class="text-danger"> <?= $error ?></p>
           <?php }?>
           <form method="post" action="addAdress.php">
-          <input type="hidden" name="contactId" value="<?= htmlspecialchars($_GET["contactId"]) ?>">
+            <input type="hidden" name="contactId" value="<?= isset($_POST["contactId"]) ? (int) $_POST["contactId"] : (int) $_GET["contact_id"] ?>">
+            <input type="hidden" name="contactName" value="<?= isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"] ?>">
 
             <div class="mb-3 row">
               <label for="adress_name" class="col-md-4 col-form-label text-md-end">Name</label>  

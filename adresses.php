@@ -55,8 +55,8 @@ var_dump($adresses->rowCount() );
           <p class="m-2"> <?= $adress["adress_location"]?> </p>
           
         <!-- EDIT&DELETE -->
-          <a href="editAdress.php?id=<?= $contact["id"] ?>" class="btn btn-secondary mb-2">Edit Address</a>
-          <a href="modifyAdresses.php?id=<?= $contact["id"] ?>" class="btn btn-danger mb-2">Modify Adress</a>
+          <a href="editAdress.php?adress_id=<?= $adress["adress_id"] ?>&contactId=<?= $contactId ?>&contactName=<?=$contactName?>" class="btn btn-secondary mb-2">Edit Address</a>
+          <a href="deleteAdress.php?adress_id=<?= $adress["adress_id"] ?>&contactId=<?= $contactId ?>&contactName=<?=$contactName?>" class="btn btn-danger mb-2">DELETE Adress</a>
 
         </div>
       </div>
