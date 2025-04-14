@@ -21,6 +21,7 @@ $result = $contacts->fetchAll(PDO::FETCH_ASSOC);
 var_dump($result);
 var_dump($contacts->rowCount() );
 
+
 ?>
 
 <?php require "partials/header.php"; ?>
@@ -42,8 +43,14 @@ var_dump($contacts->rowCount() );
         <div class="card-body">
           <h3 class="card-title text-capitalize"> <?= $contact["name"] ?></h3>
           <p class="m-2"> <?= $contact["phone_number"] ?></p>
+          <h5 class="card-title">Adresses</h5>
+          <p class="m-2">Aqui va la dir 1</p>
+          <p class="m-2">Aqui va la dir 1</p>
+          <a href="adresses.php?contactId=<?= $contact["id"] ?>&contactName= <?= $contact["name"] ?>" class="btn btn-secondary mb-2">Modify adrresses</a> <br>
+        <!-- EDIT&DELETE -->
           <a href="edit.php?id=<?= $contact["id"] ?>" class="btn btn-secondary mb-2">Edit Contact</a>
           <a href="delete.php?id=<?= $contact["id"] ?>" class="btn btn-danger mb-2">Delete Contact</a>
+          
         </div>
       </div>
     </div>

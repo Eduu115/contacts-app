@@ -19,3 +19,12 @@ CREATE table contacts(
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+-- TENGO QUE HACER UN POPULATE TAMBIEN
+DROP TABLE adresses;
+CREATE TABLE adresses(
+    adress_id INT AUTO_INCREMENT PRIMARY KEY,
+    adress_name VARCHAR(255),
+    adress_location VARCHAR(255),
+    contact_id INT NOT NULL,
+    FOREIGN KEY (contact_id) REFERENCES contacts(id)
+);      
