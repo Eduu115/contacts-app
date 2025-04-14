@@ -11,9 +11,9 @@ if(!isset($_SESSION["user"])){
 
 $id = (int) $_SESSION["user"]["user_id"];
 var_dump($id);
-
+// CONSULTA PARA LOS CONTACTOS DEL USUARIO
 $contacts = $conn->prepare("SELECT * FROM contacts WHERE user_id = :id");
-$contacts->bindParam(":id", $id, PDO::PARAM_INT);
+$contacts->bindParam(":id", $id,PDO::PARAM_INT);
 $contacts->execute();
 
 $result = $contacts->fetchAll(PDO::FETCH_ASSOC);
@@ -21,6 +21,9 @@ $result = $contacts->fetchAll(PDO::FETCH_ASSOC);
 var_dump($result);
 var_dump($contacts->rowCount() );
 
+// CONSULTA PARA LAS DIRECCIONES DE CADA CONTACTO
+// TODO: foreach con cada nombre de direccion y que sea un link,
+// que al pulsar sobre el, tambien te lleve a las direccines
 
 ?>
 
@@ -43,14 +46,16 @@ var_dump($contacts->rowCount() );
         <div class="card-body">
           <h3 class="card-title text-capitalize"> <?= $contact["name"] ?></h3>
           <p class="m-2"> <?= $contact["phone_number"] ?></p>
-          <h5 class="card-title">Adresses</h5>
-          <p class="m-2">Aqui va la dir 1</p>
-          <p class="m-2">Aqui va la dir 1</p>
-          <a href="adresses.php?contactId=<?= $contact["id"] ?>&contactName= <?= $contact["name"] ?>" class="btn btn-secondary mb-2">Modify adrresses</a> <br>
+          <!-- <h5 class="card-title">Adresses</h5> -->
+          <!-- <p class="m-2">Aqui va la dir 1</p>
+          <p class="m-2">Aqui va la dir 1</p> -->
+        <!-- ADRESSES -->
+          <a href="adresses.php?contactId=<?= $contact["id"] ?>&contactName= <?= $contact["name"] ?>"
+            class="btn btn-secondary mb-2 w-100">Adresses</a> 
         <!-- EDIT&DELETE -->
           <a href="edit.php?id=<?= $contact["id"] ?>" class="btn btn-secondary mb-2">Edit Contact</a>
           <a href="delete.php?id=<?= $contact["id"] ?>" class="btn btn-danger mb-2">Delete Contact</a>
-          
+        
         </div>
       </div>
     </div>
