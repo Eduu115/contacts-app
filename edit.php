@@ -21,6 +21,12 @@ if($statement->rowCount()==0){
 
 $contact = $statement->fetch(PDO::FETCH_ASSOC);
 
+if($contact["id"] !== $_SESSION["user"]["user_id"] ){
+  http_response_code(403);
+  echo("HTTP 403 UNAUTHORIZED");
+  return;
+}
+
 $error = null;
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
