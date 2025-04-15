@@ -7,7 +7,7 @@ user session handling, and user management.
 ###### repository link (ignore this):
 ###### https://github.com/Eduu115/contacts-app.git
 
-# ------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 # [ES] INSTRUCCIONES DE USO:
 
@@ -20,7 +20,7 @@ respectiva a la BBDD
 El mismo scrpit cuenta con usuarios creados con diversos contactos y direcciones por si se quiere hacer el testing sin introducir y
 crear todo a mano, facilitando el uso
 
-# ------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 # [EN] USE INSTRUCTIONS:
 
@@ -33,7 +33,7 @@ related to the database will be created.
 The same script includes users with various contacts and addresses, in case you want to perform testing without having to manually  
 enter and create everything, making it easier to use.
 
-# ------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ###### [ES] Me ha resultado muy complicado conseguir que al introducir algo que en la validacion era incorrecto (en las direcciones) sea redirigido correctamente a la misma pagina con los mismos datos introducidos en la URL y asi no perder informacion o introducirla erronea y evitando fallos, lo he conseguido con mucho trabajo y tras una investigacion y asignando las variables segun tengan o no datos, si vienen de POST, que el valor de la variable sea el que viene del POST y con el GET igual. Ademas, he trabajado en que al hacer el header para el redirect, lo haga al gestor de direcciones, junto a los datos previamente enviados en la URI
 
