@@ -32,6 +32,6 @@ $conn->prepare("DELETE FROM adresses WHERE adress_id = :adressId")->execute([":a
 
 $_SESSION["flash"] = ["message" => "Adress {$adress['adress_name']} deleted successfully."];
 
-header("Location: home.php")
+header("Location: adresses.php?contactId=" . urlencode($contactId) . "&contactName=" . urlencode($contactName));
 
 ?>
