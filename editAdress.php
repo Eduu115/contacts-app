@@ -10,8 +10,8 @@ if(!isset($_SESSION["user"])){
 }
 $adress_id = isset($_POST["adressId"]) ? (int) $_POST["adressId"] : (int) $_GET["adress_id"];
 $contactName = isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"];
-var_dump($contactName);
-var_dump($adress_id);
+// var_dump($contactName);
+// var_dump($adress_id);
 $statement = $conn->prepare("SELECT * FROM adresses WHERE adress_id = :adress_id");
 $statement->execute([":adress_id"=> $adress_id]);
 

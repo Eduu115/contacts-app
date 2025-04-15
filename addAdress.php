@@ -8,7 +8,7 @@ if(!isset($_SESSION["user"])){
   header("Location: login.php");
   return;
 }
-var_dump($_SERVER['REQUEST_URI']);
+// var_dump($_SERVER['REQUEST_URI']);
 
 $adress_contact = isset($_POST["contactName"]) ? $_POST["contactName"] :  $_GET["contactName"];
 
@@ -26,17 +26,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $userId= $_SESSION["user"]["user_id"];
         $contactId = (int) $_POST["contactId"];
 
-        var_dump($userId);
-        var_dump($contactId);
-
+        // VALIDACION CONTACTO
         // Verificar si el contacto existe
         $checkStatement = $conn->prepare("SELECT id FROM contacts WHERE id = :contactId");
         $checkStatement->bindParam(":contactId", $contactId);
         $checkStatement->execute();
         $contact = $checkStatement->fetch(PDO::FETCH_ASSOC);
 
+        // Validacion error
         if (!$contact) {
-            die("Invalid contact id."); // o redirigir con un mensaje de error
+          $error = "Invalid contact id.";
+          print($error);
+          die(); 
         }
 
 

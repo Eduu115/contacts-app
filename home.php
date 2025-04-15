@@ -10,7 +10,7 @@ if(!isset($_SESSION["user"])){
 }
 
 $id = (int) $_SESSION["user"]["user_id"];
-var_dump($id);
+// var_dump($id);
 // CONSULTA PARA LOS CONTACTOS DEL USUARIO
 $contacts = $conn->prepare("SELECT * FROM contacts WHERE user_id = :id");
 $contacts->bindParam(":id", $id,PDO::PARAM_INT);
@@ -18,8 +18,8 @@ $contacts->execute();
 
 $result = $contacts->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($result);
-var_dump($contacts->rowCount() );
+// var_dump($result);
+// var_dump($contacts->rowCount() );
 
 // CONSULTA PARA LAS DIRECCIONES DE CADA CONTACTO
 // TODO: foreach con cada nombre de direccion y que sea un link,

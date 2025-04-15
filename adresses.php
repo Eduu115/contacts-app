@@ -13,12 +13,12 @@ $id = (int) $_SESSION["user"]["user_id"];
 
 $contactId= (int) $_GET["contactId"];
 $contactName= $_GET["contactName"];
-var_dump($contactId);
-var_dump($contactName);
+// var_dump($contactId);
+// var_dump($contactName);
 
 //AHORA QUE YA HEMOS TRATADO EL POST
 
-var_dump($id);
+// var_dump($id);
 
 $adresses = $conn->prepare("SELECT * FROM adresses WHERE contact_id = :id");
 $adresses->bindParam(":id", $contactId, PDO::PARAM_INT);
@@ -26,8 +26,8 @@ $adresses->execute();
 
 $result = $adresses->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($result);
-var_dump($adresses->rowCount() );
+// var_dump($result);
+// var_dump($adresses->rowCount() );
 
 
 ?>
